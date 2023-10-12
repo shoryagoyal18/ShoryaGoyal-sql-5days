@@ -1,0 +1,44 @@
+-- Table creation command - 
+
+create table gym_members(
+	id number(5) primary key, 
+        name varchar2(20) not null, 
+        age number(3) not null check(age>0), 
+        joining_date date default sysdate, 
+        expiration_date date default sysdate, 
+        cost number(6) not null check(cost>0), 
+        city varchar2(30) default 'Mumbai' not null, 
+        height number(2,1) not null check(height>0), 
+        weight number(4,1) not null check(weight>0), 
+        created_at date default sysdate
+);
+
+-- Inserting data in table - 
+
+insert into gym_members(id, name, age, joining_date, expiration_date, cost, city, height, weight) values(gym_seq.nextval, 'Ram', 25, '12-Oct-2023', '29-Dec-2023', 25000, 'Pune', 5.6, 45.9);
+
+insert into gym_members(id, name, age, joining_date, expiration_date, cost, city, height, weight) values(gym_seq.nextval, 'Shyam', 32, '12-Jan-2023', '25-Nov-2023', 15000, 'Mumbai', 5.3, 69.9);
+
+insert into gym_members(id, name, age, joining_date, expiration_date, cost, city, height, weight) values(gym_seq.nextval, 'Hari', 63, '5-Oct-2023', '2-Dec-2023', 35000, 'Pune', 5.6, 55.9);
+
+insert into gym_members(id, name, age, joining_date, expiration_date, cost, city, height, weight) values(gym_seq.nextval, 'user1', 23, '12-Oct-2023', '29-Dec-2023', 15000, 'Jaipur', 5.6, 55.9);
+
+insert into gym_members(id, name, age, joining_date, expiration_date, cost, city, height, weight) values(gym_seq.nextval, 'user2', 32, '12-Oct-2023', '25-Nov-2023', 15000, 'Mumbai', 5.3, 69.9);
+
+insert into gym_members(id, name, age, joining_date, expiration_date, cost, city, height, weight) values(gym_seq.nextval, 'user3', 35, '12-Jan-2023', '25-Nov-2023', 15000, 'Delhi', 5.3, 69.9);
+
+-- select all people whoes cost is greater then 20000 - 
+
+select * from gym_members where cost>20000;
+
+-- select all people who lives in pune 
+
+select * from gym_member where city='Pune'; 
+
+-- select all people who lives in mumbai and have age > 24. 
+
+select * from gym_members where city='Mumbai' and age>24; 
+
+-- select
+
+select * from gym_members where months_between(expiration_date, joining_date) = 3;
