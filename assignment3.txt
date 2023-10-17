@@ -1,0 +1,29 @@
+--------------------------------------- Query 1 ----------------------------------------------- 
+
+--------------------------------------- Query 2 ----------------------------------------------- 
+
+select c.message, u.username
+from users u, posts p, comments c
+where c.post_id = p.id
+and u.id = c.user_id
+and to_char(p.created_at) = '16-OCT-23';
+
+
+--------------------------------------- Query 3 -----------------------------------------------  
+
+select * from users
+where to_char(created_at) = '16-OCT-23';
+
+--------------------------------------- Query 4 ----------------------------------------------- 
+
+select p.caption 
+from users u, posts p 
+where u.id = p.user_id 
+and u.username = 'u2'; 
+
+--------------------------------------- Query 5 ----------------------------------------------- 
+
+select p.caption
+from posts p, comments c
+where c.post_id = p.id
+and c.user_id = p.user_id
